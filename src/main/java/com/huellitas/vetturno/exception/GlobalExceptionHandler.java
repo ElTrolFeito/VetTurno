@@ -1,7 +1,9 @@
 package com.huellitas.vetturno.exception;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
 import java.util.Map;
@@ -15,6 +17,8 @@ import java.util.TreeMap;
  }
  @ExceptionHandler(ReglaNegocioException.class)
  public ResponseEntity<ApiError> regla(ReglaNegocioException ex) { return respuesta(HttpStatus.BAD_REQUEST, ex.getMessage(), Map.of()); }
+ @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
+ public ResponseEntity<ApiError> solicitudIlegible(Exception ex) { return respuesta(HttpStatus.BAD_REQUEST, "La solicitud tiene un formato o valor inválido.", Map.of()); }
  @ExceptionHandler(DataIntegrityViolationException.class)
  public ResponseEntity<ApiError> integridad(DataIntegrityViolationException ex) { return respuesta(HttpStatus.BAD_REQUEST, "La operación contradice una regla de datos o un registro ya existente.", Map.of()); }
  @ExceptionHandler(Exception.class)
