@@ -20,4 +20,6 @@ Ejecución local el 17 de octubre de 2026 en Windows, Java 25 instalado (el proy
 | 14 | Filtro por veterinario | 200; devolvió una cita | Aprobado |
 | 15 | Reinicio y persistencia | Reinicio correcto; login ADMIN 200; agenda conservó una cita; OpenAPI 200 | Aprobado |
 
-Para repetir, inicia sesión como USER/ADMIN, ejecuta las rutas en el orden descrito en el README y prueba las mismas IDs de los registros recién creados. La contraseña nunca aparece en DTO de usuario; la aplicación codifica con `BCryptPasswordEncoder`. La verificación del hash directamente en MySQL Workbench y las capturas solicitadas por el taller quedan como evidencia visual de la defensa.
+Comprobación de almacenamiento de contraseñas: `SELECT COUNT(*) FROM usuarios WHERE password LIKE '$2%';` devolvió 3. Esto confirma que las tres contraseñas guardadas tienen prefijo BCrypt; no se exportaron ni publicaron sus hashes.
+
+Para repetir, inicia sesión como USER/ADMIN, ejecuta las rutas en el orden descrito en el README y prueba las mismas IDs de los registros recién creados. La contraseña nunca aparece en DTO de usuario; la aplicación codifica con `BCryptPasswordEncoder`. Guarda capturas de Swagger y Workbench durante la defensa.

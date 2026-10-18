@@ -92,7 +92,7 @@ El resultado se debe completar después de ejecutar el escenario en la versión 
 | 14 | Filtrar citas por veterinario | 200, solo coincidencias | OK; 200, una coincidencia |
 | 15 | Reinicio y consulta protegida en Swagger | Datos persistentes y flujo válido | OK; reinicio, login ADMIN 200, agenda con una cita; OpenAPI 200 |
 
-El detalle reproducible de esta ejecución está en [`docs/evidencias/pruebas-manuales.md`](docs/evidencias/pruebas-manuales.md). La comprobación visible de BCrypt en MySQL debe conservarse como captura personal de Workbench durante la demostración.
+El detalle reproducible de esta ejecución está en [`docs/evidencias/pruebas-manuales.md`](docs/evidencias/pruebas-manuales.md). Una consulta a MySQL confirmó que las tres cuentas registradas tienen hash BCrypt; no se copiaron hashes ni contraseñas al repositorio. Conserva una captura de Workbench para la defensa.
 
 ## Errores
 
